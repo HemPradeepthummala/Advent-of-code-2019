@@ -15,5 +15,20 @@ const intDecode = (arr) => {
   return arr[0];
 };
 
-const code = Deno.readTextFileSync('./data/input.txt').split(',');
-console.log(intDecode(code));
+const run = (noun, verb, code) => {
+  code[1] = noun;
+  code[2] = verb;
+  return intDecode(code);
+};
+
+const inputs = Deno.readTextFileSync("./data/input.txt").split(",");
+
+for (let i = 0; i <= 99; i++) {
+  for (let j = 0; j <= 99; j++) {
+    const code = [...inputs];
+    if (run(i, j, code) === 19690720) {
+      console.log(i, j);
+      break;
+    }
+  }
+}
