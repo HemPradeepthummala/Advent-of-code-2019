@@ -964,3 +964,35 @@ for (const ob in depended) {
 }
 
 console.log(count);
+
+const object = {};
+sets.forEach(([x, y]) => {
+  object[y] = x;
+});
+let value = object["YOU"];
+const yousPath = [];
+while (Object.keys(object).includes(value)) {
+  yousPath.push(value);
+  value = object[value];
+}
+
+value = object["SAN"];
+const sansPath = [];
+while (Object.keys(object).includes(value)) {
+  sansPath.push(value);
+  value = object[value];
+}
+
+
+const disJoint = (arr1,arr2) => {
+  const result = [];
+  arr1.forEach(x => {
+    if (!arr2.includes(x)) result.push(x);
+  })
+  arr2.forEach(x => {
+    if (!arr1.includes(x)) result.push(x);
+  })
+  return result;
+}
+
+console.log(disJoint(sansPath, yousPath).length);
