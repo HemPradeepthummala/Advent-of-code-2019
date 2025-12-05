@@ -20,5 +20,6 @@ const permutate = (array) => {
     }
   }
 };
+
 export const combinations = [];
 permutate(array);
