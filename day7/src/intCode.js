@@ -2,7 +2,7 @@ let result = 0;
 const operations = {
   1: (x, y, index, arr) => arr[index] = x + y,
   2: (x, y, index, arr) => arr[index] = x * y,
-  3: (arr, index, val = 5) => arr[index] = prompts.pop(),
+  3: (arr, index) => arr[index] = prompts.pop(),
   4: (arr, index) => {
     prompts.push(arr[index]);
   },
@@ -67,7 +67,7 @@ const parseInstruction = (instruction) => {
   return [opCode, modes];
 };
 
-export const intCode = (instructions, phases) => {
+export const intCode = (instructions, phases, debugObject,i) => {
   prompts = phases;
   instructions = instructions.split(",").map((x) => +x);
   let index = 0;
@@ -75,4 +75,5 @@ export const intCode = (instructions, phases) => {
     const [opCode, modes] = parseInstruction(instructions[index]);
     index = operationType[opCode](modes, instructions, index, opCode);
   }
+  debugObject[i] = instructions;
 };

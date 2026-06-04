@@ -6,6 +6,7 @@ const swap = (array, i, j = 2) => {
 };
 
 const permutate = (array) => {
+  const combinations = [];
   for (let i = 0; i < 5; i++) {
     swap(array, 0, array.length - 1);
     for (let j = 1; j < 5; j++) {
@@ -19,7 +20,8 @@ const permutate = (array) => {
       }
     }
   }
+  return combinations;
 };
 
-export const combinations = [];
-permutate(array);
+export const combinations = permutate(array).slice();
+console.log(combinations.length, combinations)
